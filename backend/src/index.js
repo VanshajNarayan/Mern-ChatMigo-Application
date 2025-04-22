@@ -6,6 +6,7 @@ import cors from "cors";
 
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import path from "path";
 
 // ! routers:-
 import authRouter from "./routes/auth.route.js";
