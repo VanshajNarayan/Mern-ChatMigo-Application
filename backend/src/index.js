@@ -4,9 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import path from "path";
+// import path from "path"; //* from nodejs
 
 // ! routers:-
 import authRouter from "./routes/auth.route.js";
@@ -21,8 +19,7 @@ import { app, server } from "./lib/socket.js";
 // ? configure dotenv:
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __dirname = path.resolve();
 
 // ? configure express server:
 // const app = express(); // * using socket server
@@ -48,15 +45,14 @@ app.use(
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
-if (process.env.NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "../frontend/dist");
+// if (process.env.NODE_ENV === "production") {
+//   // ? allow the server to accept files from the client:-
+//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.use(express.static(frontendPath));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+//   });
+// }
 
 // ? start server:
 server.listen(port, () => {
