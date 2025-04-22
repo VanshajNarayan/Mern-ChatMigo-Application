@@ -25,7 +25,7 @@ dotenv.config();
 // const app = express(); // * using socket server
 
 // ? port server:-
-const port = process.env.PORT;
+const port = process.env.PORT || 5001;
 
 // ? allow the server to accept json data from the client:-
 app.use(express.json());
