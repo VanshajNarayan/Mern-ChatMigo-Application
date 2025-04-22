@@ -16,8 +16,8 @@ const router = express.Router();
 
 // ! endpoint:-
 router.route("/user").get(ProtectRoute, GetUserForSidebar);
-router.route("/:id").get(ProtectRoute, GetMessages);
 router.route("/send/:id").post(ProtectRoute, SendMessage);
+router.route("/:id").get(ProtectRoute, GetMessages);
 
 // ! export the router:
 export default router;
